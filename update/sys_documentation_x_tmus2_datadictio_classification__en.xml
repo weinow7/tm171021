@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="" label="Table" language="en" table="x_tmus2_datadictio_classification">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>Table</label>
+            <language>en</language>
+            <name>x_tmus2_datadictio_classification</name>
+            <plural>Tables</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>estevan.hammer@admin</sys_created_by>
+            <sys_created_on>2015-11-23 19:58:39</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>e963cb5b6f3b8240fd9277f16a3ee4fa</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Table</sys_name>
+            <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+            <sys_update_name>sys_documentation_x_tmus2_datadictio_classification__en</sys_update_name>
+            <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+            <sys_updated_on>2015-11-30 22:38:34</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

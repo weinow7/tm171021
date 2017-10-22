@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="pa_tabs">
+    <pa_tabs action="INSERT_OR_UPDATE">
+        <canvas_page/>
+        <name>Home</name>
+        <page display_value="">0c3dc8ea6f2d5e00125d23eabb3ee4d2</page>
+        <sys_class_name>pa_tabs</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2016-02-15 22:36:59</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>cc3dc8ea6f2d5e00125d23eabb3ee4d2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Home</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>pa_tabs_cc3dc8ea6f2d5e00125d23eabb3ee4d2</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2016-02-15 22:36:59</sys_updated_on>
+    </pa_tabs>
+</record_update>

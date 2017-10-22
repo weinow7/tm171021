@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="x_tmus2_datadictio.dd sources user" name="x_tmus2_datadictio.dd sources user">29f5a6336f674e00fd9277f16a3ee4df</contains>
+        <role display_value="x_tmus2_datadictio.CMDB Data Dictionary Role" name="x_tmus2_datadictio.CMDB Data Dictionary Role">d2a477ad6f049240125d23eabb3ee42c</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>shawn.mccoy@admin</sys_created_by>
+        <sys_created_on>2015-11-30 23:22:15</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>9025f7ad6f049240125d23eabb3ee421</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_tmus2_datadictio.dd sources user.x_tmus2_datadictio.CMDB Data Dictionary Role</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sys_user_role_contains_9025f7ad6f049240125d23eabb3ee421</sys_update_name>
+        <sys_updated_by>shawn.mccoy@admin</sys_updated_by>
+        <sys_updated_on>2015-11-30 23:22:15</sys_updated_on>
+    </sys_user_role_contains>
+</record_update>

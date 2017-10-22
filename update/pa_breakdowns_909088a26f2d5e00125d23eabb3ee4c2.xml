@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="pa_breakdowns">
+    <pa_breakdowns action="INSERT_OR_UPDATE">
+        <default_filter/>
+        <description/>
+        <dimension display_value="Breakdown Data Dictionary Attributes">d26048a26f2d5e00125d23eabb3ee40b</dimension>
+        <display>true</display>
+        <facts_table/>
+        <field/>
+        <groups/>
+        <id>38</id>
+        <name>Breakdown Data Dictionary Attributes</name>
+        <role_override>true</role_override>
+        <roles/>
+        <script/>
+        <scripted>false</scripted>
+        <sys_class_name>pa_breakdowns</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2016-02-15 21:42:05</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>909088a26f2d5e00125d23eabb3ee4c2</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Breakdown Data Dictionary Attributes</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>pa_breakdowns_909088a26f2d5e00125d23eabb3ee4c2</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-04-15 09:35:20</sys_updated_on>
+        <type>1</type>
+        <users/>
+        <visible_to>2</visible_to>
+    </pa_breakdowns>
+</record_update>

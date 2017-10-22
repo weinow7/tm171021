@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>test of scoped application runs</name>
+        <run_as display_value="Estevan Hammer (admin)">a13aaffe0f9e82c04f1ff2a362050e8c</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2015-11-13 16:40:10</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[gs.info("a tst");]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-13 16:40:31</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>281636006f770e00125d23eabb3ee4ef</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>test of scoped application runs</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sysauto_script_281636006f770e00125d23eabb3ee4ef</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-11-13 16:40:31</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

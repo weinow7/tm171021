@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Data Dictionary Table Create</name>
+        <run_as display_value="Estevan Hammer (admin)">a13aaffe0f9e82c04f1ff2a362050e8c</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2015-11-05 23:18:20</run_start>
+        <run_time>1970-01-01 10:00:00</run_time>
+        <run_type>weekly</run_type>
+        <script><![CDATA[var attribute = new GlideRecord('x_tmus2_datadictio_data_dictionary');
+var tables = new GlideRecord('x_tmus2_datadictio_classification');
+var id;
+var table, source, name, label, desc;
+var data = global.JSON.parse(gs.getProperty('x_tmus2_datadictio.tmo.data.dictionary'));
+var dataObject;
+
+
+for(var key in data){
+	table = key;
+	if(key == "common")
+		continue;
+	
+	if(!tables.get('u_table_name',table)){
+		tables = new GlideRecord('x_tmus2_datadictio_classification');
+		tables.initialize();
+	}
+	tables.classification = data[table].tablename;
+	tables.u_table_name = table;
+	
+	id = tables.update();
+	
+	for(var item in data[key].attributes){
+		if(item != 'count' && item != 'source'){
+			dataObject = data[key].attributes[item];
+			name = item;
+			
+			if(!attribute.get('u_identifier', dataObject.sysid)){
+				gs.info(attribute.u_category);
+				attribute = new GlideRecord('x_tmus2_datadictio_data_dictionary');
+				attribute.initialize();
+			}
+			
+			gs.info(name);
+			attribute.u_column = name;
+			attribute.u_category = tables.sys_id;
+			attribute.u_identifier = dataObject.sysid;
+			attribute.u_active = dataObject.active;
+			attribute.u_modified = dataObject.updated;
+			attribute.u_type = dataObject.type;
+			attribute.u_description = dataObject.hint;
+			attribute.u_name = dataObject.display;
+			attribute.update();
+		}
+		
+	}
+	
+	
+}
+
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-13 17:42:50</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>1e6447c46f7f4e00fd9277f16a3ee46c</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>Data Dictionary Table Create</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sysauto_script_1e6447c46f7f4e00fd9277f16a3ee46c</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2016-02-16 19:21:31</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

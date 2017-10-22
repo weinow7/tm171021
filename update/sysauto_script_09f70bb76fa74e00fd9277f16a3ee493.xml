@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Data Dictionary Merge Sources and Dictionary</name>
+        <run_as display_value="Estevan Hammer (admin)">a13aaffe0f9e82c04f1ff2a362050e8c</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2015-11-12 23:19:50</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[var dataObject = new GlideRecord('x_tmus2_datadictio_data_dictionary');
+
+
+  var dataSource = new GlideRecord('x_tmus2_datadictio_data_dictionary_source');
+
+var sourceString = "";
+
+dataSource.query();
+
+while(dataSource.next())
+{
+  if(dataObject.get(dataSource.target))
+  {
+    if(sourceString.length == 0)
+      sourceString += dataSource.sys_id;
+    else
+    sourceString += "," + dataSource.sys_id;
+    dataObject.u_source= sourceString;
+    dataObject.update();
+    sourceString = '';
+  }
+    
+  
+ 
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-12 23:20:17</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>09f70bb76fa74e00fd9277f16a3ee493</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Data Dictionary Merge Sources and Dictionary</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sysauto_script_09f70bb76fa74e00fd9277f16a3ee493</sys_update_name>
+        <sys_updated_by>lesley.gustafson@admin</sys_updated_by>
+        <sys_updated_on>2016-07-25 21:00:49</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

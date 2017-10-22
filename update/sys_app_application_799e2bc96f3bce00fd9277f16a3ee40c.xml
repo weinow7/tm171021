@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_app_application">
+    <sys_app_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category>
+        <description/>
+        <device_type>browser</device_type>
+        <hint/>
+        <name/>
+        <order>100</order>
+        <roles>itil,ecmdb_read</roles>
+        <sys_class_name>sys_app_application</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-16 23:21:11</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>799e2bc96f3bce00fd9277f16a3ee40c</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Data Dictionary</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sys_app_application_799e2bc96f3bce00fd9277f16a3ee40c</sys_update_name>
+        <sys_updated_by>Marco.Chavez@admin</sys_updated_by>
+        <sys_updated_on>2016-07-06 22:25:07</sys_updated_on>
+        <title>Data Dictionary</title>
+        <view_name/>
+    </sys_app_application>
+</record_update>

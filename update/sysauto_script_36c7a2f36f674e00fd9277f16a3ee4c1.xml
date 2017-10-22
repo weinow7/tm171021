@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Data Dictionary Record Counts</name>
+        <run_as display_value="Estevan Hammer (admin)">a13aaffe0f9e82c04f1ff2a362050e8c</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>6</run_dayofweek>
+        <run_period/>
+        <run_start>2015-11-12 17:20:11</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>weekly</run_type>
+        <script><![CDATA[var data = new dataDictionary();
+var dataTable = new GlideRecord('x_tmus2_datadictio_classification');
+var dataUpdate = new GlideRecord('x_tmus2_datadictio_classification');
+dataTable.query();
+
+var count;
+var counter = 0;
+
+while(dataTable.next())
+{
+  count = data.getRecordNumbers(dataTable.u_table_name);
+  dataUpdate.get(dataTable.sys_id);
+  dataUpdate.u_record_count = count;
+  dataUpdate.update();
+}
+
+ ]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-12 20:59:19</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>36c7a2f36f674e00fd9277f16a3ee4c1</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Data Dictionary Record Counts</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sysauto_script_36c7a2f36f674e00fd9277f16a3ee4c1</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-12-03 16:20:32</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

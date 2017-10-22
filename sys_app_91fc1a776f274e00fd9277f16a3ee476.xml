@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_app">
+    <sys_app action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <enforce_license>log</enforce_license>
+        <js_level>traditional</js_level>
+        <licensable>true</licensable>
+        <license_model>none</license_model>
+        <logo/>
+        <menu/>
+        <name>dataDictionary</name>
+        <private>false</private>
+        <restrict_table_access>false</restrict_table_access>
+        <runtime_access_tracking/>
+        <scope>x_tmus2_datadictio</scope>
+        <scoped_administration>false</scoped_administration>
+        <short_description/>
+        <source>x_tmus2_datadictio</source>
+        <store_correlation_id>REPOAPP0000004984</store_correlation_id>
+        <store_url/>
+        <sys_class_name>sys_app</sys_class_name>
+        <sys_code/>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-12 20:11:58</sys_created_on>
+        <sys_id>91fc1a776f274e00fd9277f16a3ee476</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2016-02-03 22:37:46</sys_updated_on>
+        <template/>
+        <trackable>true</trackable>
+        <user_role display_value="x_tmus2_datadictio.CMDB Data Dictionary Role" name="x_tmus2_datadictio.CMDB Data Dictionary Role">d2a477ad6f049240125d23eabb3ee42c</user_role>
+        <vendor/>
+        <vendor_prefix/>
+        <version>1.0</version>
+    </sys_app>
+</record_update>

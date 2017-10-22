@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="detail_row=u_schema" label="Attribute" max_length="40" name="x_tmus2_datadictio_data_dictionary" sizeclass="69999" type="collection">
+        <element label="Active" max_length="40" name="u_active" type="string"/>
+        <element label="Table" max_length="40" name="u_category" reference="x_tmus2_datadictio_classification" type="reference"/>
+        <element label="Column" max_length="40" name="u_column" type="string"/>
+        <element label="Confidence" max_length="40" name="u_confidence" type="float"/>
+        <element label="Description" max_length="40" name="u_description" type="string"/>
+        <element label="Identifier" max_length="40" name="u_identifier" type="string"/>
+        <element label="Modified" max_length="40" name="u_modified" type="string"/>
+        <element label="Name" max_length="40" name="u_name" type="string"/>
+        <element choice="1" label="Priority" max_length="40" name="u_priority" type="choice">
+            <choice>
+                <element hint="Identifes mandatory data that is expected to always have a value and that the value must be correct because it is driving dependent processes." label="1" sequence="0" value="1"/>
+                <element hint="Identifies that the data is optional, but when collected an expectation of accuracy is expected. " label="2" sequence="1" value="2"/>
+                <element hint="Identifies supporting data that is not expected, but may add value in collection by providing additional information about an object." label="3" sequence="2" value="3"/>
+                <element hint="Identifes attributes tagged for removal or archival. " label="4" sequence="3" value="4"/>
+            </choice>
+        </element>
+        <element label="Source" max_length="4000" name="u_source" reference="x_tmus2_datadictio_data_dictionary_source" type="glide_list"/>
+        <element label="Type" max_length="40" name="u_type" type="string"/>
+        <element label="Usage" max_length="40" name="u_usage" type="integer"/>
+        <index name="index">
+            <element name="u_category"/>
+        </index>
+    </element>
+</database>

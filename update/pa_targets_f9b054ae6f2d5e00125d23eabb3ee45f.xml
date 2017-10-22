@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="pa_targets">
+    <pa_targets action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <aggregate/>
+        <any_element>false</any_element>
+        <breakdown display_value="Breakdown Data Dictionary Attributes">909088a26f2d5e00125d23eabb3ee4c2</breakdown>
+        <breakdown_level2/>
+        <color_scheme/>
+        <element>be3023996fe91200fd9277f16a3ee462</element>
+        <element_level2/>
+        <indicator display_value="Data Dictionary Empty Attributes per Table">39bc47de6f695e00125d23eabb3ee4f4</indicator>
+        <owner/>
+        <sys_class_name>pa_targets</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2016-02-15 22:52:25</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>f9b054ae6f2d5e00125d23eabb3ee45f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>39bc47de6f695e00125d23eabb3ee4f4</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>pa_targets_f9b054ae6f2d5e00125d23eabb3ee45f</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2016-02-15 22:52:25</sys_updated_on>
+    </pa_targets>
+</record_update>

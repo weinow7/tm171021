@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Modules" max_length="40" name="x_tmus2_datadictio_modules" sizeclass="5016" type="collection">
+        <element label="Module" max_length="100" name="u_module" type="string"/>
+        <element label="Table" max_length="32" name="u_table" reference="x_tmus2_datadictio_classification" type="reference"/>
+        <index name="index">
+            <element name="u_table"/>
+        </index>
+    </element>
+</database>

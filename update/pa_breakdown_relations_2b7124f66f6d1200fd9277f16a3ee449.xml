@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="pa_breakdown_relations">
+    <pa_breakdown_relations action="INSERT_OR_UPDATE">
+        <breakdown display_value="Breakdown Data Dictionary Table">14af83526fa95e00125d23eabb3ee42f</breakdown>
+        <breakdown_field>u_category</breakdown_field>
+        <common_field/>
+        <conditions table="x_tmus2_datadictio_data_dictionary">u_priority=2^EQ<item endquery="false" field="u_priority" goto="false" newquery="false" operator="=" or="false" value="2"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <display>true</display>
+        <name>Breakdown Attribute Priority Two</name>
+        <order/>
+        <related_breakdown display_value="Breakdown Data Dictionary Attributes">909088a26f2d5e00125d23eabb3ee4c2</related_breakdown>
+        <related_breakdown_field>sys_id</related_breakdown_field>
+        <sys_class_name>pa_breakdown_relations</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2016-02-16 18:44:11</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>2b7124f66f6d1200fd9277f16a3ee449</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Breakdown Attribute Priority Two</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>pa_breakdown_relations_2b7124f66f6d1200fd9277f16a3ee449</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2016-02-16 18:44:11</sys_updated_on>
+        <table>x_tmus2_datadictio_data_dictionary</table>
+    </pa_breakdown_relations>
+</record_update>

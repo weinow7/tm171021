@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_tmus2_datadictio_classification" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>classification</element>
+            <list_id display_value="x_tmus2_datadictio_classification" element="NULL" name="x_tmus2_datadictio_classification" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">68e8cbdb6f3b8240fd9277f16a3ee4f0</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>estevan.hammer@admin</sys_created_by>
+            <sys_created_on>2015-11-23 20:22:37</sys_created_on>
+            <sys_id>2ce8cbdb6f3b8240fd9277f16a3ee4f0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+            <sys_updated_on>2015-11-23 20:22:37</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_tmus2_datadictio_classification</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>estevan.hammer@admin</sys_created_by>
+            <sys_created_on>2015-11-23 20:22:37</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_id>68e8cbdb6f3b8240fd9277f16a3ee4f0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_tmus2_datadictio_classification</sys_name>
+            <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+            <sys_update_name>sys_ui_list_x_tmus2_datadictio_classification_null</sys_update_name>
+            <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+            <sys_updated_on>2015-11-23 20:22:37</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

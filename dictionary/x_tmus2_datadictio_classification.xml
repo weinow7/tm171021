@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Table" max_length="40" name="x_tmus2_datadictio_classification" type="collection">
+        <element display="true" label="Label" max_length="120" name="classification" type="string"/>
+        <element label="Hierarchy" max_length="4000" name="u_hierarchy" reference="x_tmus2_datadictio_classification" type="glide_list"/>
+        <element label="Record Count" max_length="40" name="u_record_count" type="integer"/>
+        <element label="Schema" max_length="1024" name="u_schema" type="url"/>
+        <element label="Name" max_length="100" name="u_table_name" type="string"/>
+    </element>
+</database>

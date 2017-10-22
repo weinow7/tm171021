@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Data Dictionary Identification of Sources</name>
+        <run_as display_value="Estevan Hammer (admin)">a13aaffe0f9e82c04f1ff2a362050e8c</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2015-11-12 21:07:34</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[var dataScript = new dataDictionary(); 
+
+var dataObject = new GlideRecord('x_tmus2_datadictio_data_dictionary');
+
+var sourceObject;
+dataObject.query();
+var counter = 0;
+/************ things to do *******************
+This should be folded into the script include
+************ things to do *******************/
+while(dataObject.next())
+{
+    sourceData = dataScript.getAttributeSource(dataObject.u_category.u_table_name, dataObject.u_name);
+
+      if(sourceData != undefined)
+      {
+        while(sourceData.next())
+        {
+
+          if(checkDataSource(sourceData) == false)
+            createDataSource(sourceData);
+        }
+      }
+    }
+ 
+
+//Check to see if not in the source data dictionary table.
+function checkDataSource(sourceItem)
+{
+  var result = false;
+  var dataSource = new GlideRecord('x_tmus2_datadictio_data_dictionary_source');
+  dataSource.addEncodedQuery("table="+sourceItem.source_table+"^target="+dataObject.sys_id);
+  dataSource.query();
+
+  if(dataSource.hasNext() && dataSource.getRowCount() == 1)
+    result = true;
+  
+  return result;
+}
+
+function createDataSource(sourceItem)
+{
+  var dataSource = new GlideRecord('x_tmus2_datadictio_data_dictionary_source');
+  dataSource.initialize();
+	gs.info(dataObject.sys_id);
+  dataSource.target = dataObject.sys_id;
+  dataSource.source = sourceItem.source_field;
+  dataSource.table = sourceItem.source_table;
+  dataSource.update(); 
+  
+}
+ 
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-12 21:07:55</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>2ba9ea376f674e00fd9277f16a3ee43f</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Data Dictionary Identification of Sources</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sysauto_script_2ba9ea376f674e00fd9277f16a3ee43f</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-12-01 16:50:22</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

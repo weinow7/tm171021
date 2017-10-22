@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Data Dictionary Schema Link</name>
+        <run_as display_value="Estevan Hammer (admin)">a13aaffe0f9e82c04f1ff2a362050e8c</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2015-11-13 23:02:35</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[var dataTable = new GlideRecord('x_tmus2_datadictio_classification');
+dataTable.query();
+while(dataTable.next())
+{
+	dataTable.u_schema = 'generic_hierarchy_erd.do?' +'sysparm_attributes=table_history=,table=' + dataTable.u_table_name + ',show_internal=true,' +'show_referenced=true,show_referenced_by=true,show_extended=true,show_extended_by=true,' +'table_expansion=,spacing_x=60,spacing_y=90,nocontext';
+	dataTable.update();
+	
+}
+/*'generic_hierarchy_erd.do?' +
+						'sysparm_attributes=table_history=,table=' + tableName + ',show_internal=true,' +
+						'show_referenced=true,show_referenced_by=true,show_extended=true,show_extended_by=true,' +
+						'table_expansion=,spacing_x=60,spacing_y=90,nocontext';*/]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-13 23:04:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>9e9d441c6fff4e00fd9277f16a3ee4eb</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Data Dictionary Schema Link</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sysauto_script_9e9d441c6fff4e00fd9277f16a3ee4eb</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-12-01 16:52:18</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

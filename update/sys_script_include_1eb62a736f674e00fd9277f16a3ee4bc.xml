@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_tmus2_datadictio.dataDictionary</api_name>
+        <client_callable>false</client_callable>
+        <description>This will privde the classes for the data dictionary for calling via an API Call. a</description>
+        <name>dataDictionary</name>
+        <script><![CDATA[var dataDictionary = Class.create();
+dataDictionary.prototype =  {
+	initialize:function(){
+		this.mapArray = {common:{}};
+	},
+	
+	/****************************************************************************************************
+	Return an element object. This will only be used to gather and create the mapArray to hold the data
+	dictionary.
+ 	****************************************************************************************************/
+	
+	runit:function()
+	{
+		/****************************************************************************************************
+		Deployment of Stage One
+ 		****************************************************************************************************/
+		
+		this.identifyAttributes(this.gatherCMDBTables());
+		return global.JSON.stringify(this.mapArray);
+		
+		
+	},
+	
+	gatherCMDBTables:function(){
+		
+		var cmdbTables = this.aggregate('sys_db_object',['nameLIKEcmdb'], ['COUNT,name'] );
+		
+		return cmdbTables;
+		
+	},
+	/****************************************************************************************************
+	Return NULL.
+	This will collate the basic framework of the data dictionary object.
+ 	****************************************************************************************************/
+	
+	identifyAttributes:function(table){
+		
+		
+		var commonElement;
+		var elementObject;
+		var holderObject;
+		var tableName;
+		var attribute;
+		var attributeCount=0;
+		
+		/**************************
+		Stage One - Collate of basic
+		framework.
+		
+ 		**************************/
+		while(table.hasNext())
+			{
+			//the common element identifier and holder for identification of common elements
+			commonElement = global.JSON.stringify(this.mapArray.common);
+			
+			//addition of items that should be aded move the element name to a variable.
+			
+			
+			this.mapArray[table.name] = {tablename:"",attributes:{count:0},source:{},count:0};
+			attribute = this.aggregate('sys_dictionary', ["name="+table.name],['COUNT,element']);
+			
+			
+			tableName = this.aggregate('sys_db_object', ["name="+table.name], ['COUNT,label']);
+			
+			attributeCount = this.aggregate('sys_dictionary', ["name="+table.name],['COUNT']);
+			
+			this.mapArray[table.name].tablename = tableName.label.toString();
+			if(attribute != undefined)
+				while(attribute.next()){
+				//-1 since we don't count the collection attributes which is skiped in the first item
+				//if(this.mapArray[table.name].attributes.count == 0)
+				//    this.mapArray[table.name].attributes.count = attributeCount.getAggregate('COUNT');
+				if(attribute.element.toString().indexOf('sys_') == 0)
+					{
+					
+					if(commonElement.indexOf(attribute.element) == -1)
+						{
+						this.mapArray.common[attribute.element] ={active:false, display:"", updated:"", source:"",hint:""};
+						elementObject = this.mapArray.common[attribute.element];
+					}
+				}else
+				{
+					
+					this.mapArray[table.name].attributes[attribute.element] = {active:false, display:"", updated:"", source:"",hint:"",sysid:"", type:"", usage:0};
+					elementObject = this.mapArray[table.name].attributes[attribute.element];
+					/****************************************************************************************************
+					Deployment of Stage Two  - Identification of Secondary Attributes
+ 					****************************************************************************************************/
+					
+					this.getSecondaryAttributes(table.name, attribute.element, elementObject);
+					/****************************************************************************************************
+					End of Stage Two
+ 					****************************************************************************************************/
+					
+					/****************************************************************************************************
+					End  of Stage One
+ 					****************************************************************************************************/
+				}
+				
+				
+				
+			}
+			table.next();
+		}
+	},
+	
+	
+	
+	/****************************************************************************************************
+	Pass the following variables:
+	table - string consiting of the table name to query
+	query - the encoded query to pass to create. The query may be identified within ServiceNow.
+	-Further this item should be an array with each N item representing another query to add.
+	aggregate - A two-dimensional array each index consisting of tuples will allow for the passing of aggregate items.
+	
+	Further variables may be added.
+ 	****************************************************************************************************/
+	
+	aggregate:function(table, query, aggregate){
+		var aggregateItem = new GlideAggregate(table);
+		var aggregation;
+		
+		for(var i in query)
+			{
+			
+			aggregateItem.addEncodedQuery(query);
+			
+		}
+		
+		for(var j in aggregate);
+			{
+			aggregation = aggregate[j].split(/,/);
+			if(aggregation != 1)
+				{
+				aggregateItem.addAggregate(aggregation[0],aggregation[1]);
+				//always order this aggregate
+			}
+			else
+				aggregateItem.addAggregate(aggregation[0]);
+			
+		}
+		
+		//Standard count item to always add.
+		aggregateItem.query();
+		
+		//skips the blank collection attribute
+		if(!aggregateItem.next())
+			aggregateItem = undefined;
+		
+		return aggregateItem;
+		
+	},
+	/*********************************************
+	defunct function
+ 	********************************************
+	//this will get the users who update.
+	getUserUpdate:function(table)
+	{
+		var number = this.aggregate(table, [], ["COUNT,sys_updated_by"]);
+		//There is always an initial item for
+		// number.sys_updated_by + " " +number.getAggregate("COUNT", "sys_updated_by"));
+		if(number != undefined)
+			{
+			//Initial item to be set.
+			this.mapArray[table].source[number.sys_updated_by] = {type:"user", count:0}
+			this.mapArray[table].source[number.sys_updated_by].count = number.getAggregate("COUNT", "sys_updated_by");
+			//end of initial.
+			while(number.next())
+				{
+				this.mapArray[table].source[number.sys_updated_by] = {type:"user", count:0}
+				this.mapArray[table].source[number.sys_updated_by].count = number.getAggregate("COUNT", "sys_updated_by");
+			}
+		}
+		
+	},
+	//This will get the number of records.
+ 	*********************************************
+ 	********************************************/
+	/*********************************************
+	This will get the number of records.
+ 	********************************************/
+	getUsageCounts:function(table,attribute)
+	{
+		var exceptions = "cmdb_ci_appl_ca_directory_server,cmdb_ci_appl_ca_ent_man,cmdb_ci_appl_ca_id_man,cmdb_ci_endpoint_inclusion,cmdb_ci_endpoint_sap_bo_servers,cmdb_ci_appl_ca_ent_nam";
+		var result = 0;
+		
+		if(exceptions.indexOf(table) == -1)
+			{
+			var number = this.aggregate(table,[attribute+"ISNOTEMPTY"], ["COUNT"]);
+			
+			if(number != undefined )
+				result = number.getAggregate("COUNT");
+		}
+		return result;
+	},
+	/*********************************************
+	This will get the number of records.
+ 	********************************************/
+	
+	getRecordNumbers:function(table)
+	{
+		var exceptions = "cmdb_ci_appl_ca_directory_servercmdb_ci_appl_ca_ent_man,cmdb_ci_appl_ca_id_man,cmdb_ci_endpoint_inclusion,cmdb_ci_endpoint_sap_bo_servers,cmdb_ci_appl_ca_ent_nam";
+		var result = 0;
+		if(exceptions.indexOf(table) == -1)
+			{
+			var number = this.aggregate(table,[], ["COUNT"]);
+			
+			if(number != undefined )
+				result = number.getAggregate("COUNT");
+		}
+		return result;
+	},
+	//This will iterate and get the required data sources.
+	//oddly this is returning to many items then i need.
+	/*********************************************
+	Last Left Off
+	This is causing an error in which the aggregate
+	is returning null.
+ 	********************************************/
+	getAttributeSource: function(table,element)
+	{
+		var data = this.getRecord("sys_transform_entry","target_table="+table+"^target_field="+element);//cmdb_sam_sw_install
+		return data;
+	},
+	
+	getRecord:function(table,query)
+	{
+		var record = new GlideRecord(table);
+		var result;
+		record.addEncodedQuery(query);
+		record.query();
+		if(!record.hasNext())
+			result = undefined;
+		else
+			result = record;
+		
+		return result;
+		
+	},
+	
+	getSecondaryAttributes:function(table, element, elementObject)
+	{
+		try{
+			
+			
+			
+			
+			var holderObject;
+			
+			holderObject =this.aggregate('sys_dictionary', ["name="+table+"^element="+element],['COUNT,active']);
+			
+			elementObject.active = holderObject.active.toString();
+			
+			//implementation of updated date
+			holderObject= this.aggregate('sys_dictionary', ["name="+table+"^element="+element],['COUNT,sys_updated_on']);
+			
+			elementObject.updated = holderObject.sys_updated_on.toString();
+			
+			//implementation of sys_id
+			holderObject= this.aggregate('sys_dictionary', ["name="+table+"^element="+element],['COUNT,sys_id']);
+			
+			elementObject.sysid = holderObject.sys_id.toString();
+			
+			
+			//implementation of type
+			holderObject= this.aggregate('sys_dictionary', ["name="+table+"^element="+element],['COUNT,internal_type']);
+			
+			elementObject.type = holderObject.internal_type.getDisplayValue().toString()
+			
+			//implmentation of hint
+			holderObject = this.aggregate('sys_documentation', ["name="+table+"^element="+element],['COUNT,hint']);
+			
+			elementObject.hint = holderObject.hint.toString();
+			
+			//implmentation of display value or othersie the label.
+			holderObject = this.aggregate('sys_documentation', ["name="+table+"^element="+element],['COUNT,label']);
+			
+			elementObject.display = holderObject.label.toString();
+		}
+		catch(err)
+		{
+			gs.info("the current error ", err);
+			gs.info(element);
+		}
+		
+	},
+	/**************************************************
+	I need to both create the module record and then:
+	create the module attribute link.
+	I don't need the JSON object in this case.
+ 	*************************************************/
+	
+	getView:function(title)
+	{
+
+		var modules,elements,list;
+		
+		//the module views:
+		
+		modules = this.getRecord('sys_app_module','link_type=LIST^title='+title);
+		list = "";
+		while(modules.next())
+		{
+			
+			elements = this.getRecord('sys_ui_element', 'sys_ui_section.name=' + modules.name );
+
+			while(elements.next())
+				list+= elements.element +',';
+			
+		}
+		list = list.substring(0,list.length-1);
+		gs.info(list);
+		
+		return list;
+	},
+	
+	
+	getDataSource: function(history){
+		var dataSource, dataHistory,  classifier;
+		var date, cmdb, oneRecord;
+		//aggregate:function(table, query, aggregate){
+			
+			dataSource = this.aggregate('discovery_device_history', ['status='+history.toString()],['COUNT', 'classified_as']);
+			
+			if(dataSource === undefined)
+				return dataSource;
+			
+			while(dataSource.next())
+				{
+				//getRecord:function(table,query)
+				
+				dataHistory =  this.getRecord('discovery_device_history', 'status='+history.toString()+'^classified_as='+dataSource.classified_as);
+				
+				if(dataHistory === undefined)
+					continue;
+				
+				if(!dataHistory.next())
+					continue;
+				
+				date = dataHistory.sys_created_on;
+				cmdb = dataHistory.cmdb_ci;
+				oneRecord = new GlideRecord('sys_history_set');
+				
+				if(!oneRecord.get('id', cdmb))
+					continue;
+				
+				
+				
+			}
+			
+			
+			
+		},
+		
+		type: 'dataDictionary'
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-12 20:54:39</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>1eb62a736f674e00fd9277f16a3ee4bc</sys_id>
+        <sys_mod_count>67</sys_mod_count>
+        <sys_name>dataDictionary</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sys_script_include_1eb62a736f674e00fd9277f16a3ee4bc</sys_update_name>
+        <sys_updated_by>lesley.gustafson@admin</sys_updated_by>
+        <sys_updated_on>2016-03-30 18:32:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

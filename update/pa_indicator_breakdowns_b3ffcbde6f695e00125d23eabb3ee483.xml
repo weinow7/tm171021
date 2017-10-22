@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="pa_indicator_breakdowns">
+    <pa_indicator_breakdowns action="INSERT_OR_UPDATE">
+        <breakdown display_value="Breakdown Data Dictionary Table">14af83526fa95e00125d23eabb3ee42f</breakdown>
+        <display>true</display>
+        <indicator display_value="Data Dictionary Empty Attributes per Table">39bc47de6f695e00125d23eabb3ee4f4</indicator>
+        <order>100</order>
+        <sys_class_name>pa_indicator_breakdowns</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2016-02-15 18:09:38</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>b3ffcbde6f695e00125d23eabb3ee483</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Breakdown Data Dictionary Table.Data Dictionary Empty Attributes per Table</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>pa_indicator_breakdowns_b3ffcbde6f695e00125d23eabb3ee483</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2016-02-15 18:09:38</sys_updated_on>
+    </pa_indicator_breakdowns>
+</record_update>

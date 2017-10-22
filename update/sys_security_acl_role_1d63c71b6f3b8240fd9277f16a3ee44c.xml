@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-23 19:58:38</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>1d63c71b6f3b8240fd9277f16a3ee44c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_tmus2_datadictio_classification.x_tmus2_datadictio_classification_user</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_security_acl display_value="x_tmus2_datadictio_classification">1963c71b6f3b8240fd9277f16a3ee44b</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_1d63c71b6f3b8240fd9277f16a3ee44c</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-11-23 19:58:38</sys_updated_on>
+        <sys_user_role display_value="x_tmus2_datadictio.dd classification user" name="x_tmus2_datadictio.dd classification user">8163c71b6f3b8240fd9277f16a3ee447</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

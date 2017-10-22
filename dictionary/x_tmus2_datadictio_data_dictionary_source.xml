@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Data Dictionary Source" max_length="40" name="x_tmus2_datadictio_data_dictionary_source" type="collection">
+        <element label="Owner" max_length="40" name="owner" reference="sys_user" type="reference"/>
+        <element label="Source" max_length="40" name="source" type="string"/>
+        <element display="true" label="Table" max_length="40" name="table" type="string"/>
+        <element label="Target" max_length="40" name="target" reference="x_tmus2_datadictio_data_dictionary" type="reference"/>
+        <element label="Type" max_length="40" name="type" type="string"/>
+        <index name="index">
+            <element name="owner"/>
+        </index>
+        <index name="index2">
+            <element name="target"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_relationship">
+    <sys_relationship action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <apply_to/>
+        <basic_apply_to>x_tmus2_datadictio_modules</basic_apply_to>
+        <basic_query_from>x_tmus2_datadictio_data_dictionary</basic_query_from>
+        <insert_callback/>
+        <name>Module Attributes</name>
+        <query_from/>
+        <query_with><![CDATA[getList();
+
+function getList()
+{
+	var data = new x_tmus2_datadictio.dataDictionary();
+	var list = data.getView(parent.u_module);
+	gs.info(list);
+	//if(list == undefined)
+	//	return list;
+
+   gs.info(parent.u_table);
+	current.addEncodedQuery('u_columnIN'+list+'u_category='+parent.u_table);
+		
+}
+]]></query_with>
+        <reference_field/>
+        <related_list/>
+        <simple_reference>false</simple_reference>
+        <sys_class_name>sys_relationship</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-12-17 20:45:21</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c783fec36f941a40125d23eabb3ee4d9</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>Module Attributes</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sys_relationship_c783fec36f941a40125d23eabb3ee4d9</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-12-17 22:44:19</sys_updated_on>
+    </sys_relationship>
+    <sys_translated_text action="delete_multiple" query="documentkey=c783fec36f941a40125d23eabb3ee4d9"/>
+</record_update>

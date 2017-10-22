@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[var jq = jQuery.noConflict();
+
+jq(document).ready(function(){
+	updateDropbox();
+});
+
+
+function updateDropbox()
+{
+	
+	var dataTable = new GlideRecord('sys_properties');
+	dataTable.get('940d1f406fbf4e00fd9277f16a3ee4c7');
+	
+	var dataTableNames = JSON.parse(dataTable.value);
+	for(var key in dataTableNames)
+		{
+		if(key != "common")
+			{
+			//console.log(dataTableNames[key].tablename);
+			jq("#data_dictionary").append('<option value="'+key+'" selected>'+dataTableNames[key].tablename+ ' ---  ' + key+'</option>');
+		}
+	}
+}
+
+function queryTheDictionary()
+{
+	var theTable = new GlideRecord('sys_db_object');
+	var queryString;
+	theTable.addQuery('name',jq("#data_dictionary").val());
+	theTable.query();
+	if(theTable.next())
+		queryString = tableNames(theTable);
+	
+	jq("#tableFrame").attr("src", "https://tmusdev.service-now.com/x_tmus2_datadictio_data_dictionary_list.do?sysparm_fixed_query=u_tableIN"+queryString);
+}
+
+function tableNames(table)
+{
+	var dataTable = new GlideRecord('sys_db_object');
+	console.log(table.name);
+	console.log(table.super_class);
+	if(table.super_class != undefined && table.super_class != "")
+	{
+		dataTable.get(table.super_class);
+		return table.name + ","+    tableNames(dataTable);
+	}
+	else if(table != undefined)
+		return  table.name;
+	
+}]]></client_script>
+        <description>This will provide a way to perform a table merge.</description>
+        <direct>false</direct>
+        <endpoint>x_tmus2_datadictio_table_data_dictionary.do</endpoint>
+        <html><![CDATA[<label for="data_dictionary">Select the Table:</label>
+<select id="data_dictionary">Test an Input
+
+</select><br/>
+<button onclick='queryTheDictionary()'>Get Dictionary</button>
+<iframe src="" id="tableFrame" style="width:100%;height:100%;" ></iframe>]]></html>
+        <name>table_data_dictionary</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>estevan.hammer@admin</sys_created_by>
+        <sys_created_on>2015-11-20 19:52:43</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d9256f926ff7ce00125d23eabb3ee411</sys_id>
+        <sys_mod_count>73</sys_mod_count>
+        <sys_name>table_data_dictionary</sys_name>
+        <sys_package display_value="dataDictionary" source="x_tmus2_datadictio">91fc1a776f274e00fd9277f16a3ee476</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="dataDictionary">91fc1a776f274e00fd9277f16a3ee476</sys_scope>
+        <sys_update_name>sys_ui_page_d9256f926ff7ce00125d23eabb3ee411</sys_update_name>
+        <sys_updated_by>estevan.hammer@admin</sys_updated_by>
+        <sys_updated_on>2015-11-23 16:14:39</sys_updated_on>
+    </sys_ui_page>
+</record_update>
